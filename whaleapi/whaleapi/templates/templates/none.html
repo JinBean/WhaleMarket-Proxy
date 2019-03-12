@@ -1,0 +1,39 @@
+{% load static %}
+
+<html>
+	<head>
+		<title>Whale API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	</head>
+	<body>
+
+
+			<section id="three" class="wrapper align-center">
+				<div class="inner">
+                    <article>
+                        <header>
+                            <h3 id="result"></h3>
+                        </header>
+                        <footer>
+                            <a href="{% url 'index' %}" class="button">Go back</a>
+                        </footer>
+                    </article>
+				</div>
+			</section>
+
+
+
+	</body>
+</html>
+
+
+<script>
+    var x = String({{ id }});
+    if (x != -999999){
+        document.getElementById("result").innerHTML = "No results found with ID of {{ id }}";
+    } else {
+        document.getElementById("result").innerHTML = "No duplicate keys allowed - {{ whale }}";
+    }
+</script>

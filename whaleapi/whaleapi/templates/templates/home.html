@@ -1,0 +1,73 @@
+{% load static %}
+
+<style>
+    body{
+        margin:40 auto;
+        padding-left: 40px;
+    }
+
+</style>
+<html>
+
+	<head>
+		<title>Whale API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<body>
+
+        <section id="three" class="wrapper align-center">
+            <div class="inner">
+                <div class="flex flex-2">
+                    <article>
+                        <header>
+                            <h2>Get Request</h2>
+                            <p> Leave blank for all</p>
+                        </header>
+                        <form action="/getrequest/" method=get>
+                            <label style="display: inline-block;">Enter id: </label>
+                            <input id="id_number" type="number" name="number" value="">
+                            <br><br>
+                            <input type="submit" value="Get">
+                        </form>
+                    </article>
+                    <br><br><br><br>
+                    <article>
+                        <header>
+                            <h2>Post Request</h2>
+                        </header>
+                        <form action="/postrequest/" method=post>
+                            {% csrf_token %}
+                            <label style="display: inline-block; width:160px;">Enter Whale Name: </label>
+                            <input required="true" id="whales" type="text" name="whaleName" value="">
+                            <br>
+                            <label style="display: inline-block; width:160px;">Enter Country of Origin:</label>
+                            <input required="true" id="country" type="text" name="country" value="">
+                            <br><br>
+                            <input type="submit" value="Post">
+                        </form>
+                    </article>
+                </div>
+                <br><br><br>
+                <h2><a href="{% url 'purgecache' %}">Purge Cache</a></h2>
+                <p id="purged">
+
+                </p>
+            </div>
+        </section>
+
+	</body>
+</html>
+
+<script>
+    var purge = String({{ cache }});
+    var callnumber = String({{ callnumber }});
+    var cachehit = String({{ cachehit }});
+    console.log(callnumber);
+    console.log(cachehit);
+    if (purge == "true"){
+        document.getElementById("purged").innerHTML = ("Cache is purged <br> Cache Hit Ratio: " + cachehit + "/" + callnumber);
+    } else {
+        document.getElementById("purged").innerHTML = ("Cache Hit Ratio: " + cachehit + "/" + callnumber);
+    }
+</script>
