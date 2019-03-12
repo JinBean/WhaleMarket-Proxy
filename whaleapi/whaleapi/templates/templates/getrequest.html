@@ -16,11 +16,11 @@
                         <header>
                             <h3>Get Request Result</h3>
                         </header>
-                            <ul>
+                            <p>
                                 {% for result in results %}
-                                    <li>{{ result }}</li>
+                                    {{ result }}
                                 {% endfor %}
-                            </ul>
+                            </p>
                         <footer>
                             <a href="{% url 'index' %}" class="button">Go back</a>
                         </footer>
