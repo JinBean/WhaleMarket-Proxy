@@ -21,18 +21,22 @@ Both requests are set to rate-throttle at 100 requests/day by default. This valu
 
 There is also an endpoint to purge the cache completely. If the cache has been purged successfully, a message will appear notifiying you so.
 
+----------
 
 ### Setting Up Server
 
 Create a python file with the directory "whaleapi/whaleapi/settings_secret.py"
 
 This file stores both the server secret key and the whalemarket API key in the form:
-
+```
   APIKey = "fill-in-secret"
   
   secretKey = "fill-in-secret"
+```
   
 Run the command "python manage.py runserver" to start the server. (I used Python 3.6)
+
+---------
 
 ### Changing throttle rates
 
